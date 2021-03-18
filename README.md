@@ -8,7 +8,7 @@ The FragmentExample1 app displays an image and the title and text
 
 ### homework
 
-<img src="/fragmentIMG/homework.giff" width=300>
+<img src="/fragmentIMG/homework.gif" width=300>
 
 ### fragment2
 
