@@ -1,5 +1,6 @@
 package com.example.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -85,5 +86,10 @@ public class MainActivity extends AppCompatActivity {
 
         // save the state of the fragment (true=open, false=close)
         savedInstanceState.putBoolean(STATE_FRAGMENT, isFragmentDisplayed);
+    }
+
+    public void launchSecondActivity(View view) {
+        Intent intent = new Intent(this, SecondActivity.class);
+        startActivity(intent);
     }
 }
