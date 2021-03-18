@@ -53,5 +53,15 @@ public class SimpleFragment extends Fragment {
                 }
             }
         });
+
+        // set ratingBar OnRatingBarChangeListener
+        songRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                Toast.makeText(getContext(), "My Rating: " + rating, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return rootView;
     }
 }
