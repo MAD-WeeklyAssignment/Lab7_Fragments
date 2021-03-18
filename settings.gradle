@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "FragmentExample1"
+rootProject.name = "Fragments"
