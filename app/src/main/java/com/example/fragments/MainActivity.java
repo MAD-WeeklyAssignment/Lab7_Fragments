@@ -41,4 +41,49 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void displayFragment() {
+        SimpleFragment simpleFragment = SimpleFragment.newInstance();
+
+        // get the fragment manager and start a transaction
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // add the simple fragment
+        fragmentTransaction.add(R.id.fragment_container, simpleFragment).addToBackStack(null).commit();
+
+        // update the button text
+        mButton.setText(R.string.close);
+
+        // set boolean flag to indicate fragment is open
+        isFragmentDisplayed = true;
+    }
+
+    public void closeFragment() {
+        // get the fragment manager
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        // check to see if the fragment is already showing
+        SimpleFragment simpleFragment = (SimpleFragment) fragmentManager.findFragmentById(R.id.fragment_container);
+        if (simpleFragment != null) {
+            // create and commit the transaction to remove the fragment
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.remove(simpleFragment).commit();
+        }
+
+        // update the button text
+        mButton.setText(R.string.open);
+
+        // set boolean flag to indicate fragment is closed
+        isFragmentDisplayed = false;
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        // save the state of the fragment (true=open, false=close)
+        savedInstanceState.putBoolean(STATE_FRAGMENT, isFragmentDisplayed);
+    }
 }
