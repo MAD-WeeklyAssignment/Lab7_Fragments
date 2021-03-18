@@ -5,9 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
-import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -24,6 +22,10 @@ public class SimpleFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static SimpleFragment newInstance() {
+        return new SimpleFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -31,7 +33,6 @@ public class SimpleFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_simple,
                 container, false);
         final RadioGroup radioGroup = rootView.findViewById(R.id.radio_group);
-        final RatingBar songRatingBar = rootView.findViewById(R.id.rating_bar);
 
         // set radioGroup onCheckedChanged listener
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -51,14 +52,6 @@ public class SimpleFragment extends Fragment {
                     default:
                         break;
                 }
-            }
-        });
-
-        // set ratingBar OnRatingBarChangeListener
-        songRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                Toast.makeText(getContext(), "My Rating: " + rating, Toast.LENGTH_SHORT).show();
             }
         });
 
